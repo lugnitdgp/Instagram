@@ -3,8 +3,10 @@ from django.shortcuts import render,HttpResponse, HttpResponseRedirect, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm
+from .forms import UserForm,CreatePostForm
 from django.contrib.auth.models import User
+from .models import Profile,Post
+from django.core.files.storage import FileSystemStorage
 
 
 
@@ -45,3 +47,19 @@ def login_view(request):
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
+@login_required
+def create_post(request):
+	if request.method=='POST':
+		form=CreatePostForm(request.POST,request.FILES)
+		if form.is_valid():
+			form.save()
+			
+			return redirect('/')
+	else:
+		form=CreatePostForm()
+	
+    
+	return render(request,'photoapp/postenter.html',{'form':form})
+
+

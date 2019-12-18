@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
+
 class Profile(models.Model):
 	user=models.OneToOneField(User,on_delete=models.CASCADE)
 	bio=models.TextField(max_length=500, blank=True)
@@ -22,7 +23,8 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Post(models.Model):
-	title=models.CharField(max_length=100)
-	content=models.TextField()
+	caption=models.CharField(max_length=100)
+	image=models.FileField(upload_to='images/')
+	location=models.TextField()
 	date_posted = models.DateTimeField(default=timezone.now)
 	author=models.ForeignKey(User,on_delete=models.CASCADE)
