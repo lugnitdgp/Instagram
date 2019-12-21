@@ -1,0 +1,20 @@
+<html>
+<title>INSTAGRAM</title>
+<body>
+	<h1>THE
+	 LIST OF POSTS</h1>
+lists
+
+{% for i in posts %}
+<br>
+
+<h1>{{i.author}}</h1><br>
+<img class="img-fluid img-thumbnail" src="{{ i.image.url }}" style="width:300px;height:500px;">
+<a href="{% url 'post-detail' i.id %}"><h3>{{i.caption}}</h3></a><br>
+
+{{i.date_posted}}<br>
+
+{% endfor %}
+</body>
+</html>
+

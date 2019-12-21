@@ -12,3 +12,9 @@ class CreatePostForm(forms.ModelForm):
 	class Meta:
 		model=Post
 		fields=('caption','image','location',)
+
+class UpdatePostForm(forms.ModelForm):
+	class Meta:
+		model=Post
+		fields=('caption','location')
+
