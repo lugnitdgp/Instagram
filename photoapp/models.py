@@ -35,3 +35,13 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.caption
+
+
+class Comment(models.Model):
+	post = models.ForeignKey('photoapp.Post', on_delete=models.CASCADE, related_name='comments')
+	author = models.ForeignKey(User, on_delete=models.CASCADE)
+	text=models.TextField(max_length=200)
+	date=models.DateTimeField(default=timezone.now())
+
+	def __str__(self):
+		return self.text

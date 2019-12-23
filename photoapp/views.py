@@ -1,11 +1,11 @@
-from django.shortcuts import render,HttpResponse, HttpResponseRedirect, redirect
+from django.shortcuts import render,HttpResponse, HttpResponseRedirect, redirect, reverse
 
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm,CreatePostForm,UpdatePostForm
+from .forms import UserForm,CreatePostForm,UpdatePostForm,CreateCommentForm
 from django.contrib.auth.models import User
-from .models import Profile,Post
+from .models import Profile,Post, Comment
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 
@@ -102,12 +102,21 @@ def delete_post(request,key):
 
 def view_post(request,key):
 	posts=Post.objects.get(id=key)
-	print(posts.author)
-	print(request.user)
+	comments=Comment.objects.filter(post=posts).order_by('-date')
+	co=[]
+
+	for i in comments:
+		#print(i.text)
+		#print(type(i))
+		co.append(i)
+	#print(co)
+	print(co)
+	#print(posts.author)
+	#print(request.user)
 	if posts.author==request.user:
-		return render(request,'photoapp/viewpost2.html',{'posts':posts})
+		return render(request,'photoapp/viewpost2.html',{'posts':posts,'co':co})
 	else:
-		return render(request,'photoapp/viewpost.html',{'posts':posts})
+		return render(request,'photoapp/viewpost.html',{'posts':posts,'co':co})
 
 def update_post(request,key):
 	posts=Post.objects.get(id=key)
@@ -116,7 +125,7 @@ def update_post(request,key):
 		if form.is_valid():
 			#posts=form.save(commit=False)
 			#posts.author=request.user
-			#posts.image=posts.image
+			posts.image=posts.image
 			posts.caption=form.cleaned_data['caption']
 			posts.location=form.cleaned_data['location']
 			posts.date_posted=timezone.now()
@@ -127,6 +136,30 @@ def update_post(request,key):
 		form=UpdatePostForm()
 
 	return render(request,'photoapp/update_post.html',{'form':form})
+
+def create_comment(request,key):
+	posts=Post.objects.get(id=key)
+	comments=Comment.objects.filter(post=posts)
+	comment_list=[]
+	print(posts)
+	print(comments)
+	if request.method=='POST':
+		form=CreateCommentForm(request.POST)
+		if form.is_valid():
+			p=form.save(commit=False)
+			p.author=request.user
+			p.post=posts
+			p.save()
+			next = request.POST.get('next',None)
+			#return HttpResponseRedirect(next)
+			#return redirect('/home/key/')
+			return redirect('/home/%s' % key )
+	else:
+		form=CreateCommentForm()
+	for i in comments:
+		print(i)
+
+	return render(request,'photoapp/create_comment.html',{'form':form})
 
 
 

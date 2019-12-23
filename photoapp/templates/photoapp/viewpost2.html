@@ -6,7 +6,11 @@
 	<img class="img-fluid img-thumbnail" src="{{ posts.image.url }}" style="width:300px;height:500px;"><br>
 
 	 <a button class="btn btn-outline-danger" href="{% url 'post-update' posts.id %}">Update</button></a>
-	 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-confirm-delete' posts.id%}">Delete</button>
+	 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-confirm-delete' posts.id%}">Delete</button></a><br>
+	 <a button class="btn btn-outline-danger" href="{% url 'create-comment' posts.id %}">add comment</button></a><br>
+	 	{% for i in co %}
+	<h7>{{i.text}}  -{{i.author}}</h7><br>
+	{% endfor %}
 	
 </body>
 </html>

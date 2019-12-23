@@ -12,4 +12,5 @@ urlpatterns=[
 				path('home/<key>/confirm_delete/deleted',views.delete_post,name='post-delete'),
 				path('home/<key>/',views.view_post,name='post-detail'),
 				path('home/<key>/update',views.update_post,name='post-update'),
+				path('home/<key>/create_comment',views.create_comment,name='create-comment'),
 			]
