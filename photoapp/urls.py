@@ -13,4 +13,6 @@ urlpatterns=[
 				path('home/<key>/',views.view_post,name='post-detail'),
 				path('home/<key>/update',views.update_post,name='post-update'),
 				path('home/<key>/create_comment',views.create_comment,name='create-comment'),
+				path('home/<key>/like_api/', views.LikePostAPI, name='post_like_api'),
+				path('home/<key>/like_post', views.like_post, name='like-post'),
 			]
