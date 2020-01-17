@@ -4,12 +4,16 @@
 	<h1>THE
 	 LIST OF POSTS</h1>
 	 <a href={%url 'logout'%}>signout</a>
+
+	<a href="{% url 'update_profile' %}"><h3>UpdateProfile</h3></a><br>
 lists
+
+<a href="{% url 'create_post' %}"><h3>Create post</h3></a><br>
 
 {% for i in posts %}
 <br>
 
-<h1>{{i.author}}</h1><br>
+<h1>{{i.author}}</h1>   <img class="img-fluid img-thumbnail" src="{{ i.author.profile.image.url }}" style="width:100px;height:100px;"><br>
 <img class="img-fluid img-thumbnail" src="{{ i.image.url }}" style="width:300px;height:500px;">
 <a href="{% url 'post-detail' i.id %}"><h3>{{i.caption}}</h3></a><br>
 

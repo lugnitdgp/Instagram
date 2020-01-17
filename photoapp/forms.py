@@ -24,3 +24,8 @@ class CreateCommentForm(forms.ModelForm):
 		model=Comment
 		fields=('text',)
 
+class UpdateProfileForm(forms.ModelForm):
+	class Meta:
+		model=Profile
+		fields=('bio','image')
+

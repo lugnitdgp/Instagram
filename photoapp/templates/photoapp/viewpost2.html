@@ -4,6 +4,10 @@
 	<h2>User is -{{posts.author}}</h2><br>
 	<h4>{{posts.caption}}</h4><br>
 	<img class="img-fluid img-thumbnail" src="{{ posts.image.url }}" style="width:300px;height:500px;"><br>
+	likes--{{l}}<br>
+	
+	<a href="{% url 'like-post' posts.id %}" ><button type="submit" value="{{posts.id}}" class="btn btn-primary">Like</button></a><br>
+	
 
 	 <a button class="btn btn-outline-danger" href="{% url 'post-update' posts.id %}">Update</button></a>
 	 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-confirm-delete' posts.id%}">Delete</button></a><br>
@@ -14,10 +18,7 @@
 	{% endfor %}
 
 	 
-      <form method="POST" class="post-form" enctype='multipart/form-data'>
-      	{% csrf_token %}
-      	<a href="{% url 'like-post' posts.id %}" ><button type="submit" value="{{posts.id}}" class="btn btn-primary">Like</button></a>
-      </form>
+      
       
 	
 </body>

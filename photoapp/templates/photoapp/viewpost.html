@@ -7,25 +7,17 @@
 </script>
 	<h2>User is -{{posts.author}}</h2><br>
 	<h4>{{posts.caption}}</h4><br>
-	<img class="img-fluid img-thumbnail" src="{{ posts.image.url }}" style="width:300px;height:500px;"><br>
+	<img class="img-fluid img-thumbnail" src="{{ posts.image.url }}" style="width:300px;height:500px;"><br>likes is -{{l}}<br>
+
 
 	 
 	 <a button class="btn btn-outline-danger" href="{% url 'create-comment' posts.id %}">add comment</button></a><br>
+	 
 	 	{% for i in co %}
 	<h7>{{i.text}}  -{{i.author}}</h7><br>
 	{% endfor %}
 
-	{% if user in posts.likes.all %}
-          <a id=imageElement{{post.id}}  onclick="toggleLike({{posts.id}})"><img src="/media/nav_buttons/liked.svg" height="17" width="17"></a>
-        {% else %}
-          <a id=imageElement{{post.id}}  onclick="toggleLike({{posts.id}})"><img src="/media/nav_buttons/unliked.svg" height="17" width="17"></a>
-        {% endif %}
-
-       
-      <form method="POST" class="post-form" enctype='multipart/form-data'>
-      	{% csrf_token %}
-      	<a href="{% url 'like-post' posts.id %}" ><button type="submit" value="{{posts.id}}" class="btn btn-primary">Like</button></a>
-      </form>
+	
       
 
 

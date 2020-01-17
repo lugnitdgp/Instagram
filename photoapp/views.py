@@ -3,9 +3,9 @@ from django.shortcuts import render,HttpResponse, HttpResponseRedirect, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm,CreatePostForm,UpdatePostForm,CreateCommentForm
+from .forms import UserForm,CreatePostForm,UpdatePostForm,CreateCommentForm, UpdateProfileForm
 from django.contrib.auth.models import User
-from .models import Profile,Post, Comment
+from .models import Profile,Post, Comment, Likes
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.views.generic import ListView
@@ -67,12 +67,26 @@ def create_post(request):
 			p.save()
 			#form.save()
 			
-			return redirect('/')
+			return redirect('/home')
 	else:
 		form=CreatePostForm()
 	
     
 	return render(request,'photoapp/postenter.html',{'form':form})
+
+def update_profile(request):
+	if request.method=='POST':
+		form=UpdateProfileForm(request.POST,request.FILES, instance=request.user.profile)
+		if form.is_valid():
+			form.save()
+
+			return redirect('/home')
+
+	else:
+		form=UpdateProfileForm()
+
+	return render(request,'photoapp/update_profile.html',{'form':form})
+
 
 def home(request):
 	users=User.objects.all()
@@ -111,10 +125,17 @@ def delete_post(request,key):
 def view_post(request,key):
 	posts=Post.objects.get(id=key)
 	comments=Comment.objects.filter(post=posts).order_by('-date')
+	liked=Likes.objects.filter(post=posts)
+	print(liked.count())
+	l=liked.count()
 	co=[]
+	lo=[]
+	for i in liked:
+		lo.append(i)
+
 
 	for i in comments:
-		#print(i.text)
+		#print(i.text)l
 		#print(type(i))
 		co.append(i)
 	#print(co)
@@ -122,9 +143,9 @@ def view_post(request,key):
 	#print(posts.author)
 	#print(request.user)
 	if posts.author==request.user:
-		return render(request,'photoapp/viewpost2.html',{'posts':posts,'co':co})
+		return render(request,'photoapp/viewpost2.html',{'posts':posts,'co':co, 'l':l, 'user':request.user, 'likes':lo})
 	else:
-		return render(request,'photoapp/viewpost.html',{'posts':posts,'co':co})
+		return render(request,'photoapp/viewpost.html',{'posts':posts,'co':co, 'l':l, 'user':request.user, 'likes':lo})
 
 def update_post(request,key):
 	posts=Post.objects.get(id=key)
@@ -170,9 +191,12 @@ def create_comment(request,key):
 	return render(request,'photoapp/create_comment.html',{'form':form})
 def like_post(request,key):
 	posts=Post.objects.get(id=key)
-	posts.likes.add(request.User)
-	posts.save()
-	return redirect('/home/%s' % key)
+	liked=Likes()
+	liked.post=posts
+	liked.users=request.user
+	liked.save()
+	return redirect('/home/%s' % key )
+	
 
 def LikePostAPI(APIView):
     authentication_classes = (authentication.SessionAuthentication,)
