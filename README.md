@@ -1,7 +1,7 @@
 Functionality:
 
 Users has to login first as well as new users have to signup. (Without login nothing will work).
-Registered users can write, delete and update a blog.
+Registered users can write, delete and update a post.
 
 
 To setup the project on your local machine:
