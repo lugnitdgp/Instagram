@@ -43,7 +43,7 @@ def login_view(request):
 		if user is not None:
 			if user.is_active:
 				login(request,user)
-				return redirect('/')
+				return redirect('/home')
 			else:
 				message='Not Activated'
 		else:
