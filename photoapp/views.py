@@ -91,10 +91,9 @@ def update_profile(request):
 def home(request):
 	users=User.objects.all()
 	print(users)
-	#profiles=Profile.objects.post.order_by('date_posted')
-	#print(profiles)
+	
 	pk=request.user
-	#rint(pk)
+	
 	following=[]
 	posts=Post.objects.order_by("-date_posted")
 	for i in users:
