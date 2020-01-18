@@ -10,10 +10,6 @@ from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.views.generic import ListView
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import authentication, permissions
-from django.db.models import Q
 
 
 def index(request):
@@ -197,34 +193,6 @@ def like_post(request,key):
 	return redirect('/home/%s' % key )
 	
 
-def LikePostAPI(APIView):
-    authentication_classes = (authentication.SessionAuthentication,)
-    permission_classes = (permissions.IsAuthenticated,)
-
-    def get(self, request, slug=None, format=None, pk=None):
-        obj = get_object_or_404(Post, id=pk)
-        user = self.request.user
-        updated = False
-        liked = False
-        if user.is_authenticated:
-            if user in obj.likes.all():
-                liked = False
-                obj.likes.remove(user)
-                like_count = obj.likes.count()
-                img = '<img src="/media/nav_buttons/unliked.svg" height="17" width="17">'
-            else:
-                liked = True
-                obj.likes.add(user)
-                like_count = obj.likes.count()
-                img = '<img src="/media/nav_buttons/liked.svg" height="17" width="17">'
-            updated = True
-        data = {
-            "updated": updated,
-            "liked": liked,
-            "like_count": like_count,
-            "img": img
-        }
-        return Response(data)
 
 
 
