@@ -1,26 +1,73 @@
-Functionality:
+# Instagram
 
-Users has to login first as well as new users have to signup. (Without login nothing will work).
-Registered users can write, delete and update a post.
+![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)<br>
 
-
-To setup the project on your local machine:
-
-Click on Fork.
-Go to your fork and clone the project to your local machine.
-Install the requirements pip install -r requirements.txt.
-Apply the migrations python manage.py migrate.
-Finally, run the development server python manage.py runserver.
-The project will be available at 127.0.0.1:8000.
-
-To contribute to the project:
-
-Choose any open issue from.
-Comment on the issue: Can I work on this? and get assigned.
-Make changes to your fork and send a PR.
+A social blog app for posting and commenting pics.
 
 
-To send a PR, follow these rules carefully,otherwise your PR will be closed:
 
-Make PR title in this format: Fixes #IssueNo : Name of Issue
-For any doubts related to the issues, i.e., to understand the issue better etc, comment down your queries on the respective issue.
+##  Starting the Project
+
+
+1. Create a **virtual environment** with venv (install virtualenv, if its not installed).
+
+    ```
+    venv instagram
+
+    ```
+
+2. Clone the project in the virtual environment directory.
+
+    ```
+    cd Instagam
+    git clone https://github.com/lugnitdgp/Instagram.git
+
+    ```
+
+3. Activate the virtual environemnt.
+
+    #### For Linux/Mac OSX   
+    ```
+    source bin/activate
+
+    ```
+
+    #### For Windows
+    ```
+    .\Scripts\activate
+
+    ```
+
+4. Install the requirements.
+
+    ```
+    cd instagram
+    pip install -r requirements.txt
+
+    ```
+
+
+5. Run the Migrations
+    ```
+    python manage.py makemigrations
+
+    python manage.py migrate
+
+    ```
+6. Run the development server
+    ```
+    python manage.py runserver
+
+    ```
+7. Head to server http://localhost:8000
+
+8. Add Posts, Comments
+
+## For contributors
+
+Instagram uses the following technologies:
+
++ HTML/CSS/JavaScript
++ Pyhton(Django)
+
+If you want to contribute to this project, then have a look [here](https://github.com/lugnitdgp/Instagram/blob/master/CONTRIBUTING.md)
