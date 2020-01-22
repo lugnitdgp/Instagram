@@ -1,4 +1,4 @@
-<html>
+
 <html>
 <head>LOGIN PAGE</head>
 <title>INSTAGRAM</title>
@@ -10,15 +10,18 @@
 <div class="row">
 	<div class="col">
 	</div>
-	<div class="col">
+	<div class="col"> 
 <h2>Login</h2>
-<form method="post">
+<form method="post" class="form-group">
+
 	{{message}}<br>
 	
-   {% csrf_token %} Username: <input type="text" name="username" />
-  <br />
-  Password: <input type="password" name="password" />
-  <br />
+  {% csrf_token %}
+  
+
+  Username: <input type="text" name="username" /><br/>
+  Password: <input type="password" name="password" /><br/>
+  
   <button type="submit" class="btn btn-success">Log In!</button>
 
 

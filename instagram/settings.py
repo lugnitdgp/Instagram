@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'photoapp.apps.PhotoappConfig',
     'crispy_forms',
+    'django_facebook',
+
 ]
 
 MIDDLEWARE = [
@@ -64,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -122,3 +125,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+FACEBOOK_APP_ID=str('172174237336523')
+FACEBOOK_APP_SECRET   = str('4f3c1e75189e3a214a21575be0f1fc17')
