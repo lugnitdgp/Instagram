@@ -1,0 +1,12 @@
+<html>
+<tite>INSTAGRAM</tite>
+<body>
+	<form method="POST">
+		{% csrf_token %}
+	<h2>Do u want to delete This post</h2>
+
+        <a class="btn btn-outline-danger" href="{% url 'post-delete' posts.id %}">Delete</button></a>
+        <a class="btn btn-outline-danger" href="{% url 'post-detail' posts.id %}">Cancel</a>
+	 </form>
+</body>
+ </html>
