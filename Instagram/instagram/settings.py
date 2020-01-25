@@ -105,6 +105,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -148,7 +150,6 @@ MEDIA_URL='/media/'
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-FACEBOOK_APP_ID=str('172174237336523')
-FACEBOOK_APP_SECRET   = str('4f3c1e75189e3a214a21575be0f1fc17')
+
 
 LOGIN_REDIRECT_URL = '/home/'
