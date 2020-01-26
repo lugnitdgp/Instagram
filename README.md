@@ -59,7 +59,7 @@ A social blog app for posting and commenting pics.
     python manage.py runserver
 
     ```
-7. Head to server http://localhost:8000
+7. Head to server http://127.0.0.1:8000
 
 8. Add Posts, Comments
 
