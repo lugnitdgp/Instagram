@@ -1,31 +1,145 @@
-<html>
-<html>
-<head>LOGIN PAGE</head>
-<title>INSTAGRAM</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Insta</title>
+    <style>
+        html{
+    font-size: 10px;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background-color: antiquewhite;
+}
+#wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10rem;
+}
+.container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    max-width: 94rem;
+    margin: 3rem auto 0;
+}
+#wrapper > .container{
+    display: flex;
+    padding: 0 8rem;
+
+}
+
+.form-data{
+    width: 100%;
+    max-width: 35rem;
+    margin-top: 3rem;
+
+}
+.form-data form{
+    background-color: beige;
+    border: 2px solid beige;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 4rem;
+    text-align: center;
+}
+.login{
+    width: 18rem;
+    margin-bottom: 2.5rem;
+    font-size: large;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 3.5rem;
+}
+.form-data form input{
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border: 2px solid beige;
+    border-radius: 0.5rem;
+}
+.form-btn{
+    margin: 1rem 0 1.5rem;
+    height: 3rem;
+    background-color: burlywood;
+    font-size: 1.5rem;
+    color: darkslategray;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.has-separator{
+    font-size: 1.5rem;
+    color: black;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 2.5rem;
+
+}
+.facebook-login{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: blue;
+    margin-bottom: 2.5rem;
+}
+.sign-up{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    font-size: 1.5rem;
+    color: black;
+    padding: 2rem 0;
+    background-color: beige;
+    border: 2px solid beige;
+    margin: 1rem 0;
+
+}
+.sign-up a{
+    color: blue;
+    font-weight: bold;
+}
+
+    </style>
+    
+</head>
 <body>
-
-
-<div class="row">
-	<div class="col">
-	</div>
-	<div class="col">
-<h2>Login</h2>
-<form method="post">
-	{{message}}<br>
-	
-   {% csrf_token %} Username: <input type="text" name="username" />
-  <br />
-  Password: <input type="password" name="password" />
-  <br />
-  <button type="submit" class="btn btn-success">Log In!</button>
-
-
-
-</form>
-</div>
-<div class="col"></div>
-</div>
+  {% load staticfiles %}
+    <div id="wrapper">
+        <div class="container">
+            <div class="form-data">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="login">
+                        <h3>LOGIN</h3>
+                    </div>
+            
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password" placeholder="password">
+                    <button class ="form-btn" type="submit">Log In</button>
+                    <span class="has-separator">Or</span>
+                    
+                </form>
+                <div class ="sign-up">
+                    Don't have an account?<a href={% url 'signup' %}>Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -3,3 +3,6 @@ django-crispy-forms==1.8.1
 djangorestframework==3.11.0
 Pillow==7.0.0
 pytz==2019.3
+
+
+django-allauth==0.41.0  

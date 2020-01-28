@@ -1,15 +1,4 @@
-
-{% load socialaccount %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        html{
+html{
     font-size: 10px;
     box-sizing: border-box;
 }
@@ -44,7 +33,7 @@ body{
 }
 .phone-photo{
     height: 62rem;
-    background: url("media/images/photo.png") center no-repeat;
+    background: url("images/photo.png") center no-repeat;
     flex: 1;
 }
 .form-data{
@@ -62,8 +51,7 @@ body{
     text-align: center;
 }
 .logo img{
-    padding-left: 4rem;
-    width: 28rem;
+    width: 18rem;
     margin-bottom: 2.5rem;
 }
 .form-data form input{
@@ -97,7 +85,7 @@ body{
     color: blue;
     margin-bottom: 2.5rem;
 }
-.sign-up-1, .sign-up-2, .sign-up-3{
+.sign-up{
     text-align: center;
     font-size: 1.5rem;
     color: black;
@@ -105,41 +93,9 @@ body{
     background-color: beige;
     border: 2px solid beige;
     margin: 1rem 0;
-    font-family: Arial, Helvetica, sans-serif;
-    
+
 }
 .sign-up a{
     color: blue;
     font-weight: bold;
 }
-
-    </style>
-    <title>Insta</title>
-    
-</head>
-<body>
-    {% load staticfiles %}
-    <div id="wrapper">
-        <div class="container">
-            <div class="phone-photo"></div>
-            <div class="form-data">
-                <div class="logo">
-                    <img src="media/images/logo.png" alt="">
-                </div>
-                    <div class ="sign-up-1">
-                    <a href={% url 'login' %}>Login</a>
-                    </div>
-                    
-                    <div class ="sign-up-3">
-                    <a href={% provider_login_url 'google' %}>Sign In with Google</a>
-                    </div>
-                    <div class ="sign-up-2">
-                        Don't have an account?<a href={% url 'signup' %}>Sign Up</a>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
