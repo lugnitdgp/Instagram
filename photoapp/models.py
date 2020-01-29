@@ -11,7 +11,7 @@ class Profile(models.Model):
 	bio=models.TextField(max_length=500, blank=True)
 	birthdate=models.DateField(null=True,blank=True)
 	image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-	followers=models.ManyToManyField(User, blank=True, related_name='user_followers')
+	followers=models.ManyToManyField(User, blank=True, related_name='user_followers') 
 
 	def __str__(self):
 		return str(self.user)

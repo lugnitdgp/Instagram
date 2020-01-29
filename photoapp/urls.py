@@ -14,6 +14,6 @@ urlpatterns=[
 				path('home/<key>/',views.view_post,name='post-detail'),
 				path('home/<key>/update',views.update_post,name='post-update'),
 				path('home/<key>/create_comment',views.create_comment,name='create-comment'),
-				
+				path('signup/view',views.view,name='view'),
 				path('home/<key>/like_post', views.like_post, name='like-post'),
 			]

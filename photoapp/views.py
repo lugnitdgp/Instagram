@@ -15,6 +15,8 @@ from django.views.generic import ListView
 def index(request):
 	return render(request,'photoapp/home.html')
 
+def view(request):
+	return render(request, 'photoapp/view_profile.html')
 
 def signup(request):
 	if request.method=='POST':

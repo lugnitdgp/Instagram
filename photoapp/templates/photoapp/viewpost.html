@@ -18,7 +18,7 @@
 	 <a button class="btn btn-outline-danger" href="{% url 'create-comment' posts.id %}">add comment</button></a><br>
 	 
 	 	{% for i in co %}
-	<h7>{{i.text}}  -{{i.author}}</h7><br>
+	<h7>{{i.text}}  {{i.author}}</h7><br>
 	{% endfor %}
 
 	
@@ -28,7 +28,7 @@
 
 
 	{% for i in co %}
-	<h7>{{i.text}}  -{{i.author}}</h7>
+	<h7>{{i.text}}  {{i.author}}</h7>
 	{% endfor %}
 </div>
 <div class="col"></div>

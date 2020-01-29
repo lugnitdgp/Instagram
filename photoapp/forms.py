@@ -27,5 +27,5 @@ class CreateCommentForm(forms.ModelForm):
 class UpdateProfileForm(forms.ModelForm):
 	class Meta:
 		model=Profile
-		fields=('bio','image')
+		fields=('bio','image','birthdate') 
 
