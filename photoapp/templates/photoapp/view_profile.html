@@ -15,7 +15,10 @@
         <p>Email:{{user.email}}</p>
         <p>Bio:{{user.profile.bio}}</p>
         <p>Birthday:{{user.profile.birthdate}}</p>
-        
+        {% if user.profile.image %}
+        <img src="{{user.profile.image.url}}"alt="">
+        {% endif %}
+        <a href="{% url 'del_user' %}"><h3>Remove</h3></a><br>
     </div>
 </body>
 </html>

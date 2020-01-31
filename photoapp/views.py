@@ -5,18 +5,26 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm,CreatePostForm,UpdatePostForm,CreateCommentForm, UpdateProfileForm
 from django.contrib.auth.models import User
-from .models import Profile,Post, Comment, Likes
+from .models import Profile,Post, Comment, Likes, Friend
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.views.generic import ListView
 
 
 
+
+
+
+
 def index(request):
 	return render(request,'photoapp/home.html')
 
-def view(request):
-	return render(request, 'photoapp/view_profile.html')
+def view(request,pk=None):
+	if pk:
+		user=User.objects.get(pk=pk)
+	else:
+		user=request.user
+	return render(request, 'photoapp/view_profile.html',{'user':user})
 
 def signup(request):
 	if request.method=='POST':
@@ -87,8 +95,11 @@ def update_profile(request):
 
 
 def home(request):
-	users=User.objects.all()
+	users=User.objects.exclude(id=request.user.id)
 	print(users)
+	
+	
+	
 	
 	pk=request.user
 	
@@ -107,16 +118,11 @@ def home(request):
 	#print(following)
 	post_list=posts
 	#print(post_list)
-	return render(request,'photoapp/postlist.html',{'posts':post_list})
+	return render(request,'photoapp/postlist.html',{'posts':post_list,'users':users})
 
-def confirm_delete(request,key):
-	posts=Post.objects.get(id=key)
-	return render(request,'photoapp/confirm_delete.html',{'posts':posts})
 
-def delete_post(request,key):
-	posts=Post.objects.get(id=key)
-	posts.delete()
-	return redirect('/home')
+
+
 
 
 def view_post(request,key):
@@ -143,7 +149,7 @@ def view_post(request,key):
 		return render(request,'photoapp/viewpost2.html',{'posts':posts,'co':co, 'l':l, 'user':request.user, 'likes':lo})
 	else:
 		return render(request,'photoapp/viewpost.html',{'posts':posts,'co':co, 'l':l, 'user':request.user, 'likes':lo})
-
+	
 def update_post(request,key):
 	posts=Post.objects.get(id=key)
 	if request.method=='POST':
@@ -193,7 +199,36 @@ def like_post(request,key):
 	liked.users=request.user
 	liked.save()
 	return redirect('/home/%s' % key )
+
+def change_friends(request, operation, pk):
+	new_friend = User.objects.get(pk = pk)
 	
+	if operation == 'add':
+		Friend.make_friend(request.user, new_friend)
+	elif operation == 'remove':
+		Friend.lose_friend(request, new_friend)
+	return redirect('/home/')
+
+
+
+
+
+def delete_post(request,key):
+	posts=Post.objects.get(id=key)
+	posts.delete()
+	return redirect('/home')
+
+def confirm_delete(request,key):
+	posts=Post.objects.get(id=key)
+	return render(request,'photoapp/confirm_delete.html',{'posts':posts})
+
+
+	
+def del_user(request):
+	user=request.user
+	user.delete()
+	return render(request, 'photoapp/delete.html',{'user':user})
+
 
 
 

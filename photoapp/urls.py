@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf.urls import url, include
+
 
 urlpatterns=[
 				path('',views.index,name='index'),
@@ -16,4 +18,7 @@ urlpatterns=[
 				path('home/<key>/create_comment',views.create_comment,name='create-comment'),
 				path('signup/view',views.view,name='view'),
 				path('home/<key>/like_post', views.like_post, name='like-post'),
+				url(r'^signup/view/(?P<pk>\d+)/$',views.view,name='view_with_pk'),
+				path('signup/del_user',views.del_user,name='del_user'),
+				
 			]

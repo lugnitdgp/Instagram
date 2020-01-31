@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>INSTAGRAM</title>
+</head>
+<body>
+    <div class="container">
+        welcome{{user}}
+        <form method="POST">
+            {% csrf_token %}
+        <h2>Do u want to delete your account</h2>
+    
+        <a class="btn btn-outline-danger" href="{% url 'index' %}">Delete</button></a>
+            
+         </form>
+    </div>
+</body>
+</html>
