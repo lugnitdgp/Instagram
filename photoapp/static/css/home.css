@@ -1,0 +1,55 @@
+@font-face {
+    font-family: Billabong;
+    src: url("../fonts/Billabong.ttf");
+}
+
+body{
+    background: url("../images/page_bg.jpg") center center fixed no-repeat;
+    background-size: cover;
+    line-height: 1.6em;
+    margin: 0;
+}
+
+#main-header{
+    background-color: black;
+    padding: 10px;
+    font-family: Billabong;
+}
+
+#main-header h1{
+    text-align:center;
+    font-size: 70px;
+    color: coral;
+}
+
+
+#main-header ul{
+    padding: 10px;
+    text-align: center;
+    list-style: none;
+}
+
+#main-header ul li{
+    display: inline;
+    padding-right: 5px;
+    font-size: 35px;
+}
+
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover{
+    color:rgb(0, 183, 255);
+}
+
+#main-section{
+    text-align: center;
+    margin-top: 100px;
+    padding: 10px;
+    font-family: Billabong;
+    font-size: 170px;
+    color: #000;
+}

@@ -1,0 +1,107 @@
+body{
+    background: url("../images/page_bg.jpg") center center fixed no-repeat;
+    background-size: cover;
+    line-height: 1.6em;
+    margin: 0;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+.button{
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.button[type="submit"]{
+    font-size: 35px;
+    font-family: Billabong;
+}
+
+.button:hover{
+    background-color: rgb(0, 183, 255);
+    color: black;
+}
+
+#main-header{
+    background-color: black;
+    padding: 10px;
+    font-family: Billabong;
+}
+
+#main-header h2{
+    color: coral;
+    font-size: 65px;
+    text-align: center;
+}
+
+ul{
+    padding: 10px;
+    list-style: none;
+}
+
+#navbar{
+    background-color: black;
+    color: #fff;
+    list-style: none;
+    padding: 0;
+}
+
+#navbar li{
+    display: inline;
+    padding-right: 20px;
+    font-size: 30px;
+    font-family: Billabong;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover{
+    color:rgb(0, 183, 255);
+}
+
+#form-container{
+    /*background: url("../images/bg_image.jpg") center center fixed no-repeat;*/
+    margin-top: 70px;
+}
+
+.form{
+    text-align: center;
+    padding: 40px;
+}
+
+.form .form-group{
+    padding-bottom: 15px;
+}
+
+.form label{
+    display: block;
+    font-family: Billabong;
+    font-size: 50px;
+    color: black;
+}
+.form input[type="text"], .form input[type="password"], .form input[type="email"]{
+    margin: 20px 0;
+    padding: 8px;
+    border: none;
+    background-color:#fff;
+    color: #333;
+    font-size: 16px;
+    width: 35%;
+    border-radius: 20px;
+    text-align: center;
+
+}
+
+/* #image-chooser{
+   text-align: center;
+} */
+
+

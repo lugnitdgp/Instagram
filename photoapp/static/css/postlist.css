@@ -1,0 +1,88 @@
+@font-face {
+    font-family: Billabong;
+    src: url("../fonts/Billabong.ttf");
+}
+
+body{
+    background: url("../images/page_bg.jpg") center center fixed no-repeat;
+    background-size: cover;
+    line-height: 1.6em;
+    margin: 0;
+}
+
+.container{
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+#main-header{
+    background-color: black;
+    padding: 10px;
+    font-family: Billabong;
+}
+
+#main-header h1{
+    text-align:center;
+    font-size: 70px;
+    color:coral;
+}
+
+#main-header ul{
+    padding: 10px;
+    text-align: end;
+    list-style: none;
+}
+
+#main-header ul li{
+    display: inline;
+    padding-left: 20px;
+    font-size: 35px;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover{
+    color:rgb(0, 183, 255);
+}
+
+.author-group{
+    font-family: Arial, Helvetica, sans-serif; 
+    text-align: left;
+    font-size: 14px;
+}
+
+hr{
+    background-color:black;
+    height: 3px;
+}
+
+
+.post{
+    background-color: #fff/*#fffdd0*/;
+    padding: 20px;
+    border: 3px solid #333;
+    border-radius: 40px;
+}
+
+.date-time{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.post-image{
+    border: 2px solid black;
+}
+
+#post-link{
+    text-align: left;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#post-link:hover{
+    color: red;
+}

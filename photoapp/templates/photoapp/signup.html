@@ -1,12 +1,35 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+	<title>INSTAGRAM</title>
+	<link rel="stylesheet" href="../../static/css/signup.css">
+</head>
 
-{% block body %}
-{% csrf_token %}
-<div class='container'>
-<form method="post" action="">
-	{% csrf_token %}
-	{{form.as_p}}
-	<input type="submit">
-</form>
-
-</div>
-{% endblock %}
+	<body>
+		{% load crispy_forms_tags %}
+		<!-- {% csrf_token %}-->
+		<header id="main-header">
+			<h2>Signup</h2>
+			<ul id="navbar">
+				<li><a href="">Home</a></li>
+				<li><a href={% url 'login' %}>Login</a></li>
+			</ul>
+		</header> 
+		<section id="form-container">
+			<div class='container'>
+				<form method="post" action="" class="form">
+					{% csrf_token %}
+					<!-- <div id="image-chooser">
+						<img src="../../static/images/no_profile_pic.jpg" alt="" width="200 px" height="200px">
+						<br><br>
+						<input type="file" name="pic" accept="/*.*">
+					</div> -->
+					
+					{{form|crispy}}
+					<button type="submit" class="button">Sign Up</button>
+				</form>
+		
+			</div>
+		</section>
+	</body>
+</html>
