@@ -1,0 +1,72 @@
+<!doctype=html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="antiquewhite" content="#faebd7" >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<title>user profile</title>
+    <style>
+.logo img{
+    width="620px"
+    height="220px"
+}
+</style>
+</head>
+
+<body bgcolor="red">
+{% load staticfiles %}
+      <div class="logo">
+          <p align="center"> <img src="media/images/logo.png"></p>
+                </div>
+
+
+<div align="center"><p align="center"><h1>USER PROFILE
+</h1></div>
+<div class="container">
+<div class="row">
+<div class="col-sm">
+    <p align="center"><h2>user id: {{request.user}}</h2></div>
+<div class="col-sm">
+    <p align="center"><h2>followers: {{request.followers}}</h2></div>
+</div>
+</div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 35rem;" class="col" my-3 >
+            <img src="{{profile.image.urls}}" class="img-circle" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">profile picture</h5>
+                <a href="{% url 'update_profile' %}" class="btn btn-primary">Update picture</a>
+            </div>
+        </div>
+
+
+
+        <div class="card" style="width: 18rem;" class="col" my-3>
+            <div class="card-body">
+                <h5 class="card-title">bio</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{request.user}}</h6>
+                <p class="card-text">{{request.profile.bio}}</p>
+                <a href="{% url 'update_profile' %}" class="card-link">update bio</a>
+            </div>
+        </div>
+    </div>
+</div>
+        <div align="center">
+            <button>
+                <a href="/<key>/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+                    Home
+                </a></button>
+        </div>
+
+    </div>
+</body>
+</html>
