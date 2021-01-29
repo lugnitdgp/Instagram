@@ -1,37 +1,92 @@
-<html>
-<title>INSTAGRAM</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<title>Post</title>
+	<style>
+		.navbar {
+			background-image: linear-gradient(to right, #fd5949, #d6249f, #285AEB);
+			margin-top: 0px;
+		}
+
+		.navbar li {
+			float: left;
+			list-style: none;
+			margin: 13px 50px 0px 50px;
+		}
+
+		.navbar li a {
+			padding: 3px 3px;
+			text-decoration: none;
+			color: white;
+			font-size: 20px;
+		}
+
+		.navbar li a:hover {
+			color: black;
+		}
+
+		#instagram {
+			font-family: 'Pacifico', cursive;
+			color: black;
+			font-size: 30px;
+			text-decoration: none;
+			margin-left: 30px;
+		}
+
+		.container {
+			margin-top: 30px;
+		}
+	</style>
+</head>
+
 <body>
+	<nav class="navbar">
+		<a id="instagram" href="{% url 'home' %}"> Instagram </a>
+		<ul>
+			<li> <a href="{% url 'create_post' %}"> Create Post </a></li>
+			<li> <a href="{% url 'update_profile' %}"> Update Profile </a></li>
+			<li> <a href={%url 'logout' %}> Log Out </a></li>
+		</ul>
+	</nav>
+
 	<div class="container">
 		<div class="row">
-		<div class="col"></div>
-		<div class="col">
-			<div class="jumbotron">
-	<h2>User is -{{posts.author}}</h2><br></div>
-	<h4>{{posts.caption}}</h4><br>
-	<img class="img-fluid img-thumbnail" src="{{ posts.image.url }}" style="width:300px;height:500px;"><br>
-	likes--{{l}}<br>
-	
-	<a href="{% url 'like-post' posts.id %}" ><button type="submit" value="{{posts.id}}" class="btn btn-primary">Like</button></a><br>
-	
+			<div class="col"></div>
+			<div class="col">
+				<div>
+					<h4>{{posts.caption}}</h4>
+				</div>
+				<img class="img-fluid img-thumbnail" src="{{ posts.image.url }}" style="width:324px;height:324px;"><br>
+				likes--{{l}}<br>
 
-	 <a button class="btn btn-outline-danger" href="{% url 'post-update' posts.id %}">Update</button></a>
-	 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-confirm-delete' posts.id%}">Delete</button></a><br>
-	 
-	 <a button class="btn btn-outline-danger" href="{% url 'create-comment' posts.id %}">add comment</button></a><br>
-	 	{% for i in co %}
-	<h7>{{i.text}}  -{{i.author}}</h7><br>
-	{% endfor %}
+				<a href="{% url 'like-post' posts.id %}"><button type="submit" value="{{posts.id}}"
+						class="btn btn-primary">Like</button></a><br>
 
-</div>
-<div class="col"></div>
-</div>
-</div>
 
-	 
-      
-      
-	
+				<a button class="btn btn-outline-danger" href="{% url 'post-update' posts.id %}">Update</button></a>
+				<a class="btn btn-danger btn-sm mt-1 mb-1"
+					href="{% url 'post-confirm-delete' posts.id%}">Delete</button></a><br>
+
+				<a button class="btn btn-outline-danger" href="{% url 'create-comment' posts.id %}">
+					Comment</button></a><br>
+				{% for i in co %}
+				<h7>{{i.text}} -{{i.author}}</h7><br>
+				{% endfor %}
+
+			</div>
+			<div class="col"></div>
+		</div>
+	</div>
 </body>
+
 </html>
