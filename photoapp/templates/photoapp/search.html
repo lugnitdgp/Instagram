@@ -1,0 +1,6 @@
+<form action="{% url 'searchuser' %}" method="POST" enctype="multipart/form-data">
+<label>ENTER USERNAME:&nbsp;</label>
+{{form.username}}
+{% csrf_token %}
+<br><input type="submit" value="search">
+</form>

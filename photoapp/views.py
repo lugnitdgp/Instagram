@@ -3,7 +3,7 @@ from django.shortcuts import render,HttpResponse, HttpResponseRedirect, redirect
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.auth.decorators import login_required
-from .forms import UserForm,CreatePostForm,UpdatePostForm,CreateCommentForm, UpdateProfileForm
+from .forms import UserForm,CreatePostForm,UpdatePostForm,CreateCommentForm, UpdateProfileForm,searchuform
 from django.contrib.auth.models import User
 from .models import Profile,Post, Comment, Likes
 from django.core.files.storage import FileSystemStorage
@@ -194,7 +194,39 @@ def like_post(request,key):
 	
 
 
-
+def searchuser(request):
+	if request.method=='POST':
+		print('2')
+		form=searchuform(request.POST)
+		usn=User.objects.all()
+		print(len(usn))
+		#f=form.cleaned_data['username']
+		print(form)
+		for i in usn:
+			#if i.username==form.username:
+				print(i.username)
+		
+		
+		if form.is_valid():
+			print('17')
+			print(form)
+			f=form.cleaned_data['username']
+			print(f)
+			for k in usn:
+				if k.username==f:
+					print(k.last_name)
+					break
+			return render(request,'photoapp\show.html',{'k':k})
+		#	print('1')
+		#	j=form.save(commit=False)
+		#	usinst=User.objects.get(username=j.username)
+		#	print(usinst)
+		#	return render(request,'show.html',{'usinst':usinst})
+		#else:
+		#	form=searchuform()
+	else:
+		form=searchuform()
+	return render(request,'photoapp\search.html',{'form':form})
 
 
 
