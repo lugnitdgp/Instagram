@@ -32,6 +32,7 @@ class Post(models.Model):
 	location=models.TextField()
 	date_posted = models.DateTimeField(default=timezone.now)
 	author=models.ForeignKey(User,on_delete=models.CASCADE)
+	nolike=models.CharField(default='0',max_length=200)
 	
 
 	def __str__(self):

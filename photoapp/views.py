@@ -89,7 +89,7 @@ def home(request):
 	print(users)
 	
 	pk=request.user
-	
+	#m=[]
 	following=[]
 	posts=Post.objects.order_by("-date_posted")
 	for i in users:
@@ -103,8 +103,17 @@ def home(request):
 
 			following.append(i.pk)
 	#print(following)
+	for n in posts:
+		k=Likes.objects.filter(post=n)
+		tno=k.count()
+		n.nolike=tno
+		#print(n.nolike)
+		#print(n.id)
+		#m.insert(n.id,tno)
+
 	post_list=posts
-	#print(post_list)
+	#print(m)
+	print(post_list)
 	return render(request,'photoapp/postlist.html',{'posts':post_list})
 
 def confirm_delete(request,key):
@@ -177,6 +186,7 @@ def create_comment(request,key):
 			next = request.POST.get('next',None)
 			#return HttpResponseRedirect(next)
 			#return redirect('/home/key/')
+
 			return redirect('/home/%s' % key )
 	else:
 		form=CreateCommentForm()
@@ -186,36 +196,49 @@ def create_comment(request,key):
 	return render(request,'photoapp/create_comment.html',{'form':form})
 def like_post(request,key):
 	posts=Post.objects.get(id=key)
+	t=1
 	liked=Likes()
 	liked.post=posts
-	liked.users=request.user
-	liked.save()
-	return redirect('/home/%s' % key )
+	liky=Likes.objects.filter(post=posts)
+	print('3')
+	for lik in liky:
+		if (lik.users==request.user):
+			t=0
+			break	
+	if t:
+		liked.users=request.user
+		liked.save()
+	else:
+		 lik.delete()
+		
+
+	
+	return redirect('/home')
 	
 
 
 def searchuser(request):
 	if request.method=='POST':
-		print('2')
+		#print('2')
 		t=0
 		form=searchuform(request.POST)
 		usn=User.objects.all()
-		print(len(usn))
+		#print(len(usn))
 		#f=form.cleaned_data['username']
-		print(form)
-		for i in usn:
+		#print(form)
+		#for i in usn:
 			#if i.username==form.username:
-				print(i.username)
+				#print(i.username)
 		
 		
 		if form.is_valid():
-			print('17')
-			print(form)
+			#print('17')
+			#print(form)
 			f=form.cleaned_data['username']
-			print(f)
+			#print(f)
 			for k in usn:
 				if k.username==f:
-					print(k.last_name)
+					#print(k.last_name)
 					t=1
 					break
 			if t:	
