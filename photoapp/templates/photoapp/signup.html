@@ -9,18 +9,49 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>SIGNUP</title>
 </head>
+<style>
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 7px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
 <body>
 	<div class='container'>
-		<div class="jumbotron">
-			<h1>Signup!!</h1>
+		<div class = "jumbotron">
+			<h1 align= "center" >Signup!!!</h1>
 		</div>
 	<form method="POST" action="">
 		{% csrf_token %}
 		{{ form|crispy }}
-		<input class="btn btn-success" type="submit" value="signup">
+		<button class="button">
+				<input class="btn btn-success" type="submit" value="signup">
+				</button>
+				<div>
 		{% if request.path == "/signup/" %}
-			Have an Account <a href="{% url 'login'%}">Login Here</a>
+			<b>Have an Account  </b> 
+			<button class="button">
+			<a href="{% url 'login'%}"> Login Here </a>
+			</button>
 		{% endif %}
+		</div>
 	</form>
 	</div>
 </body>

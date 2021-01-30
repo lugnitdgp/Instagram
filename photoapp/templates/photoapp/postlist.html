@@ -6,15 +6,20 @@
 	<div class="row">
 		<div class="col"></div>
 		<div class="col">
-	<h1>THE
-	 LIST OF POSTS</h1>
+	<h1 class="jumbotron">THE LIST OF POSTS</h1>
+	<button class="button">
 	 <a href={%url 'logout'%}>signout</a> 
+	 </button>
 
-	<a href="{% url 'update_profile' %}"><h3>UpdateProfile</h3></a><br>
+    <button class="button">
+	<a href="{% url 'update_profile' %}"><b>UpdateProfile</b></a>
+	</button>
+	<br>
 lists
 
+<button class="button">
 <a href="{% url 'create_post' %}"><h3>Create post</h3></a><br>
-
+</button>
 
 {% for i in posts %}
 <br>
