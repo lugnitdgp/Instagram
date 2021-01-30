@@ -197,6 +197,7 @@ def like_post(request,key):
 def searchuser(request):
 	if request.method=='POST':
 		print('2')
+		t=0
 		form=searchuform(request.POST)
 		usn=User.objects.all()
 		print(len(usn))
@@ -215,8 +216,12 @@ def searchuser(request):
 			for k in usn:
 				if k.username==f:
 					print(k.last_name)
+					t=1
 					break
-			return render(request,'photoapp\show.html',{'k':k})
+			if t:	
+				return render(request,'photoapp\show.html',{'k':k})
+			else:
+				return render(request,'photoapp\invalidsearch.html')
 		#	print('1')
 		#	j=form.save(commit=False)
 		#	usinst=User.objects.get(username=j.username)
