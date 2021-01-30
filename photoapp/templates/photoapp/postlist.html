@@ -20,7 +20,9 @@ lists
 <br>
 
 <h1>{{i.author}}</h1><img class="img-thumbnail" src="{{ i.author.profile.image.url }}" style="width:100px;height:100px;"><br><br>
-<img class="img-fluid img-thumbnail" src="{{ i.image.url }}" style="width:300px;height:500px;">
+<img class="img-fluid img-thumbnail" src="{{ i.image.url }}" style="width:300px;height:500px;"><br>
+<a href="{% url 'like-post' i.id %}" ><button type="submit" value="{{i.id}}" class="btn btn-primary">Like</button></a><br>
+<a button class="btn btn-outline-danger" href="{% url 'create-comment' i.id %}">add comment</button></a><br>
 <a href="{% url 'post-detail' i.id %}"><h3>{{i.caption}}</h3></a><br>
 
 {{i.date_posted}}<br>
