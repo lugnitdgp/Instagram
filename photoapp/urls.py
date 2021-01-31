@@ -16,4 +16,5 @@ urlpatterns=[
 				path('home/<key>/create_comment',views.create_comment,name='create-comment'),
 				
 				path('home/<key>/like_post', views.like_post, name='like-post'),
+				path('home/search',views.searchuser,name='searchuser'),
 			]
