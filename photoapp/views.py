@@ -242,9 +242,9 @@ def searchuser(request):
 					t=1
 					break
 			if t:	
-				return render(request,'photoapp\show.html',{'k':k})
+				return render(request,'photoapp/show.html',{'k':k})
 			else:
-				return render(request,'photoapp\invalidsearch.html')
+				return render(request,'photoapp/invalidsearch.html')
 		#	print('1')
 		#	j=form.save(commit=False)
 		#	usinst=User.objects.get(username=j.username)
@@ -254,9 +254,7 @@ def searchuser(request):
 		#	form=searchuform()
 	else:
 		form=searchuform()
-	return render(request,'photoapp\search.html',{'form':form})
-
-
+	return render(request,'photoapp/search.html',{'form':form})
 
 
 
